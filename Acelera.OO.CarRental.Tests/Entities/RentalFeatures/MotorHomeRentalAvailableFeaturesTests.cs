@@ -1,7 +1,7 @@
 using System.Linq;
-using CarRental.Entities.RentalFeatures;
-using CarRental.Entities.RentalFeatures.FeatureTypes;
-using CarRental.Entities.RentalFeatures.Interfaces;
+using Acelera.OO.CarRental.Entities.RentalFeatures;
+using Acelera.OO.CarRental.Entities.RentalFeatures.Interfaces;
+using Acelera.OO.CarRental.Entities.RentalFeatures.Types;
 using NUnit.Framework;
 
 namespace Acelera.OO.CarRental.Tests.Entities.RentalFeatures
@@ -20,7 +20,7 @@ namespace Acelera.OO.CarRental.Tests.Entities.RentalFeatures
         [Test]
         public void GetFeatures_Tests()
         {
-            var features = motorHomeRentalAvailableFeatures.GetFeatures();
+            var features = motorHomeRentalAvailableFeatures.Features;
 
             Assert.AreEqual(3, features.Count);
 

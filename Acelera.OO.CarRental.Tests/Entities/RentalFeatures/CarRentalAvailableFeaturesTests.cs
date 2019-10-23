@@ -1,7 +1,7 @@
 using System.Linq;
-using CarRental.Entities.RentalFeatures;
-using CarRental.Entities.RentalFeatures.FeatureTypes;
-using CarRental.Entities.RentalFeatures.Interfaces;
+using Acelera.OO.CarRental.Entities.RentalFeatures;
+using Acelera.OO.CarRental.Entities.RentalFeatures.Interfaces;
+using Acelera.OO.CarRental.Entities.RentalFeatures.Types;
 using NUnit.Framework;
 
 namespace Acelera.OO.CarRental.Tests.Entities.RentalFeatures
@@ -20,7 +20,7 @@ namespace Acelera.OO.CarRental.Tests.Entities.RentalFeatures
         [Test]
         public void GetFeatures_Tests()
         {
-            var features = carRentalAvailableFeatures.GetFeatures();
+            var features = carRentalAvailableFeatures.Features;
 
             Assert.AreEqual(2, features.Count);
 
@@ -64,7 +64,13 @@ namespace Acelera.OO.CarRental.Tests.Entities.RentalFeatures
         [Test]
         public void AddRefrigeratorFeature_Tests()
         {
-            //todo: test
+            var purchasedFeatures =
+            carRentalAvailableFeatures
+                .AddFeature<RefrigeratorFeature>()
+                .GetPurchasedFeatures();
+
+            Assert.AreEqual(0, purchasedFeatures.Count);
+            Assert.AreEqual(0, carRentalAvailableFeatures.EstimatePurchasedFeaturesFee());
         }
 
         [Test]
