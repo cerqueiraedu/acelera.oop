@@ -43,7 +43,6 @@ namespace Acelera.OO.CarRental.Entities.RentalSelections
             return this;
         }
 
-
         public IRental EstimatePurchasedFeaturesFee()
         {
             CalculatedPurchasedFeaturesFee = AvailableFeatures.EstimatePurchasedFeaturesFee();
@@ -81,7 +80,5 @@ namespace Acelera.OO.CarRental.Entities.RentalSelections
         }
 
         public virtual IVehicule GetRentalVehicule() => AvailableVehicules.GetRentalVehicule();
-
-
     }
 }

@@ -8,7 +8,6 @@ using Acelera.OO.CarRental.Entities.Vehicules.Types.Interfaces;
 using Acelera.OO.CarRental.Entities.Vehicules.Types;
 using Acelera.OO.CarRental.Entities.RentalSelections;
 using Acelera.OO.CarRental.Entities.RentalSelections.Interfaces;
-using Acelera.OO.CarRental.Tests.Entities.Vehicules.Types;
 
 namespace Acelera.OO.CarRental.Tests.Entities.RentalSelections
 {

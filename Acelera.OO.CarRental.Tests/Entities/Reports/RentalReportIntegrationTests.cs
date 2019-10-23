@@ -22,7 +22,7 @@ namespace Acelera.OO.CarRental.Tests.Entities.Reports
         public void Setup()
         {
             rentalReport = new RentalReport(new RentalReportFormatter(new CultureInfo("pt-BR")));
-            rentalSelection = new RentalSelection();
+            rentalSelection = new RentalSelection(new AvailableRentalSelection());
         }
 
         [Test]

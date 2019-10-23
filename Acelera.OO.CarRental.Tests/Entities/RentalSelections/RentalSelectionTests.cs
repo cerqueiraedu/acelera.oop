@@ -10,19 +10,25 @@ namespace Acelera.OO.CarRental.Tests.Entities.RentalSelections
     public class RentalSelectionTests
     {
         IRentalSelection rentalSelection;
+        Mock<IAvailableRentalSelection> availableRentalSelectionMock;
 
         [SetUp]
         public void Setup()
         {
-            rentalSelection = new RentalSelection();
+            availableRentalSelectionMock = new Mock<IAvailableRentalSelection>();
+            rentalSelection = new RentalSelection(availableRentalSelectionMock.Object);
         }
-
 
         [Test]
         public void VehiculeRental_Tests()
         {
             var actualResult = rentalSelection.VehiculeRental(It.IsAny<decimal>(), It.IsAny<int>());
             Assert.IsInstanceOf<Rental>(actualResult);
+
+            availableRentalSelectionMock.Verify(x => x.GetCarAvailableRentals(), Times.Once);
+            availableRentalSelectionMock.Verify(x => x.GetCarRentalAvailableFeatures(), Times.Once);
+            availableRentalSelectionMock.Verify(x => x.GetMotorHomeAvailableRentals(), Times.Never);
+            availableRentalSelectionMock.Verify(x => x.GetMotorHomeRentalAvailableFeatures(), Times.Never);
         }
 
         [Test]
@@ -30,6 +36,11 @@ namespace Acelera.OO.CarRental.Tests.Entities.RentalSelections
         {
             var actualResult = rentalSelection.MotorHomeRental(It.IsAny<decimal>(), It.IsAny<int>());
             Assert.IsInstanceOf<Rental>(actualResult);
+
+            availableRentalSelectionMock.Verify(x => x.GetCarAvailableRentals(), Times.Never);
+            availableRentalSelectionMock.Verify(x => x.GetCarRentalAvailableFeatures(), Times.Never);
+            availableRentalSelectionMock.Verify(x => x.GetMotorHomeAvailableRentals(), Times.Once);
+            availableRentalSelectionMock.Verify(x => x.GetMotorHomeRentalAvailableFeatures(), Times.Once);
         }
     }
 }

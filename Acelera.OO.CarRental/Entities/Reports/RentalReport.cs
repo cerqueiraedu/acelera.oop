@@ -12,10 +12,7 @@ namespace Acelera.OO.CarRental.Entities.Reports
 
         public decimal TotalEstimateDistanceFee { get; protected set; }
 
-        public RentalReport(IExhibitRentalReport rentalReportFormatter)
-        {
-            RentalReportFormatter = rentalReportFormatter;
-        }
+        public RentalReport(IExhibitRentalReport rentalReportFormatter) => RentalReportFormatter = rentalReportFormatter;
 
         public IRentalReport With(IEnumerable<IRental> rentals)
         {
@@ -39,11 +36,9 @@ namespace Acelera.OO.CarRental.Entities.Reports
             return this;
         }
 
-        public string ExhibitSummary()
-        {
-            return RentalReportFormatter
+        public string ExhibitSummary() => 
+            RentalReportFormatter
                 .Format(Rentals)
                 .ToString();
-        }
     }
 }
